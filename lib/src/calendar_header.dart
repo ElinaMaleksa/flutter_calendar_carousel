@@ -37,6 +37,7 @@ class CalendarHeader extends StatelessWidget {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         onPressed: onLeftButtonPressed,
+        padding: EdgeInsets.only(left: 10),
         icon: leftButtonIcon ??
             Icon(Icons.arrow_back_ios,
                 size: MediaQuery.of(context).size.width * 0.05,
@@ -47,6 +48,7 @@ class CalendarHeader extends StatelessWidget {
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,
         onPressed: onRightButtonPressed,
+        padding: EdgeInsets.only(right: 10),
         icon: rightButtonIcon ??
             Icon(Icons.arrow_forward_ios,
                 size: MediaQuery.of(context).size.width * 0.05,

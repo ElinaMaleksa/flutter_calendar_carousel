@@ -295,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                margin: EdgeInsets.symmetric(horizontal: 20),
                 child: _calendarCarouselNoHeader,
               ), //
             ],
