@@ -33,19 +33,30 @@ class CalendarHeader extends StatelessWidget {
   TextStyle get getTextStyle =>
       headerTextStyle != null ? headerTextStyle : defaultHeaderTextStyle;
 
-  Widget _leftButton() => IconButton(
+  Widget _leftButton(context) => IconButton(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onPressed: onLeftButtonPressed,
-        icon: leftButtonIcon ?? Icon(Icons.chevron_left, color: headerIconColor),
+        icon: leftButtonIcon ??
+            Icon(Icons.arrow_back_ios,
+                size: MediaQuery.of(context).size.width * 0.05,
+                color: headerIconColor),
       );
 
-  Widget _rightButton() => IconButton(
+  Widget _rightButton(context) => IconButton(
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         onPressed: onRightButtonPressed,
-        icon: rightButtonIcon ?? Icon(Icons.chevron_right, color: headerIconColor),
+        icon: rightButtonIcon ??
+            Icon(Icons.arrow_forward_ios,
+                size: MediaQuery.of(context).size.width * 0.05,
+                color: headerIconColor),
       );
 
   Widget _headerTouchable() => FlatButton(
         onPressed: onHeaderTitlePressed,
-        child: Text(headerTitle, 
+        child: Text(
+          headerTitle,
           semanticsLabel: headerTitle,
           style: getTextStyle,
         ),
@@ -54,17 +65,19 @@ class CalendarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) => showHeader
       ? Container(
+          height: MediaQuery.of(context).size.height * 0.08,
+          color: Colors.grey[200],
           margin: headerMargin,
           child: DefaultTextStyle(
               style: getTextStyle,
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    showHeaderButtons ? _leftButton() : Container(),
+                    showHeaderButtons ? _leftButton(context) : Container(),
                     isTitleTouchable
                         ? _headerTouchable()
                         : Text(headerTitle, style: getTextStyle),
-                    showHeaderButtons ? _rightButton() : Container(),
+                    showHeaderButtons ? _rightButton(context) : Container(),
                   ])),
         )
       : Container();

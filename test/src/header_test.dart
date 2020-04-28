@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 void main() {
   final title = "Test title";
-  final margin = const EdgeInsets.symmetric(vertical: 16.0);
   final iconColor = Colors.blueAccent;
 
   testWidgets('Verify Header Defaults', (WidgetTester tester) async {
@@ -15,7 +14,6 @@ void main() {
 
     await tester.pumpWidget(wrapped(CalendarHeader(
       headerTitle: title,
-      headerMargin: margin,
       showHeader: true,
       showHeaderButtons: true,
       headerIconColor: iconColor,
@@ -63,7 +61,6 @@ void main() {
   testWidgets('Verify Header Is Not Touchable', (WidgetTester tester) async {
     await tester.pumpWidget(wrapped(CalendarHeader(
       headerTitle: title,
-      headerMargin: margin,
       showHeader: true,
       showHeaderButtons: true,
       headerIconColor: iconColor,
@@ -82,7 +79,6 @@ void main() {
   testWidgets('Verify No Header Buttons', (WidgetTester tester) async {
     await tester.pumpWidget(wrapped(CalendarHeader(
       headerTitle: title,
-      headerMargin: margin,
       showHeader: true,
       showHeaderButtons: false,
       headerIconColor: iconColor,
