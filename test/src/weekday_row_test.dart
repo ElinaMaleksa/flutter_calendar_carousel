@@ -7,7 +7,7 @@ import 'package:flutter_calendar_carousel/src/weekday_row.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  final locale = DateFormat.yMMM("en_US");
+  final locale = DateFormat.yMMMM("en_US");
   final margin = const EdgeInsets.only(bottom: 4.0);
 
   testWidgets('test short weekday row', (WidgetTester tester) async {

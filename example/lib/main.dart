@@ -196,9 +196,8 @@ class _MyHomePageState extends State<MyHomePage> {
       selectedDateTime: _currentDate2,
       targetDateTime: _targetDateTime,
       customGridViewPhysics: NeverScrollableScrollPhysics(),
-      markedDateCustomShapeBorder: CircleBorder(
-        side: BorderSide(color: Colors.yellow)
-      ),
+      markedDateCustomShapeBorder:
+          CircleBorder(side: BorderSide(color: Colors.yellow)),
       markedDateCustomTextStyle: TextStyle(
         fontSize: 18,
         color: Colors.blue,
@@ -274,8 +273,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text('PREV'),
                       onPressed: () {
                         setState(() {
-                          _targetDateTime = DateTime(_targetDateTime.year, _targetDateTime.month -1);
-                          _currentMonth = DateFormat.yMMMM().format(_targetDateTime);
+                          _targetDateTime = DateTime(
+                              _targetDateTime.year, _targetDateTime.month - 1);
+                          _currentMonth =
+                              DateFormat.yMMMM().format(_targetDateTime);
                         });
                       },
                     ),
@@ -283,8 +284,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text('NEXT'),
                       onPressed: () {
                         setState(() {
-                          _targetDateTime = DateTime(_targetDateTime.year, _targetDateTime.month +1);
-                          _currentMonth = DateFormat.yMMMM().format(_targetDateTime);
+                          _targetDateTime = DateTime(
+                              _targetDateTime.year, _targetDateTime.month + 1);
+                          _currentMonth =
+                              DateFormat.yMMMM().format(_targetDateTime);
                         });
                       },
                     )
@@ -292,7 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
+                margin: EdgeInsets.symmetric(horizontal: 20.0),
                 child: _calendarCarouselNoHeader,
               ), //
             ],
