@@ -124,15 +124,12 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
   final Function onHeaderTitlePressed;
   final WeekdayFormat weekDayFormat;
   final bool staticSixWeekFormat;
-  final bool isScrollable;
-  final Axis scrollDirection;
   final bool showOnlyCurrentMonthDate;
   final bool pageSnapping;
   final OnDayLongPressed onDayLongPressed;
   final CrossAxisAlignment dayCrossAxisAlignment;
   final MainAxisAlignment dayMainAxisAlignment;
   final bool showIconBehindDayText;
-  final ScrollPhysics pageScrollPhysics;
 
   CalendarCarousel({
     this.viewportFraction = 1.0,
@@ -199,15 +196,12 @@ class CalendarCarousel<T extends EventInterface> extends StatefulWidget {
     this.onHeaderTitlePressed,
     this.weekDayFormat = WeekdayFormat.short,
     this.staticSixWeekFormat = false,
-    this.isScrollable = true,
-    this.scrollDirection = Axis.horizontal,
     this.showOnlyCurrentMonthDate = false,
     this.pageSnapping = false,
     this.onDayLongPressed,
     this.dayCrossAxisAlignment = CrossAxisAlignment.center,
     this.dayMainAxisAlignment = MainAxisAlignment.center,
     this.showIconBehindDayText = false,
-    this.pageScrollPhysics = const ScrollPhysics(),
   });
 
   @override
@@ -409,10 +403,7 @@ class _CalendarState<T extends EventInterface>
               child: PageView.builder(
             itemCount:
                 widget.weekFormat ? this._weeks.length : this._dates.length,
-            physics: widget.isScrollable
-                ? widget.pageScrollPhysics
-                : NeverScrollableScrollPhysics(),
-            scrollDirection: widget.scrollDirection,
+            physics: NeverScrollableScrollPhysics(),
             onPageChanged: (index) {
               this._setDate(index);
             },
@@ -951,7 +942,7 @@ class _CalendarState<T extends EventInterface>
         });
 
         _controller.animateToPage(page,
-            duration: Duration(milliseconds: 1), curve: Threshold(0.0));
+            duration: Duration(milliseconds: 1), curve: Curves.linear);
       } else {
         setState(() {
           this._pageNum = page;
@@ -960,7 +951,7 @@ class _CalendarState<T extends EventInterface>
           _endWeekday = _lastDayOfWeek(_dates[page]).weekday - firstDayOfWeek;
         });
         _controller.animateToPage(page,
-            duration: Duration(milliseconds: 1), curve: Threshold(0.0));
+            duration: Duration(milliseconds: 1), curve: Curves.linear);
       }
 
       //call callback
